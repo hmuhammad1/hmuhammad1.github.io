@@ -1,8 +1,12 @@
+//Create the table
+
 document.write("<table>");
 document.write("<caption>Calculation Results</caption>");
 document.write("<tr><th>Number 1</th><th>Operator</th><th>Number 2</th><th>Result</th></tr>");
 
 let results = [];
+
+//receive user input for numbers and operator
 
 while (true) {
   let x = prompt("Enter the first number:");
@@ -16,9 +20,12 @@ while (true) {
 
   let result;
 
+//if a number is not inserted, set result as error
+
   if (isNaN(x) || isNaN(y)) {
     result = "Error: Non-numeric input";
-  } else {
+  } 
+else {
     x = parseFloat(x);
     y = parseFloat(y);
 
@@ -43,6 +50,8 @@ while (true) {
     }
   }
 
+//write the table results
+
   document.write("<tr><td>" + x + "</td><td>" + operator + "</td><td>" + y + "</td><td>" + result + "</td></tr>");
 
   if (typeof result === "number" && !isNaN(result)) {
@@ -52,8 +61,10 @@ while (true) {
 
 document.write("</table>");
 
-// Summary Table
+// Construct the results in the summary table
+
 if (results.length > 0) {
+
   let min = Math.min(...results);
   let max = Math.max(...results);
   let total = results.reduce((acc, val) => acc + val, 0);
@@ -62,8 +73,11 @@ if (results.length > 0) {
   document.write("<table>");
   document.write("<caption>Summary Statistics</caption>");
   document.write("<tr><th>Minimum</th><th>Maximum</th><th>Average</th><th>Total</th></tr>");
+
   document.write("<tr><td>" + min + "</td><td>" + max + "</td><td>" + avg.toFixed(2) + "</td><td>" + total + "</td></tr>");
   document.write("</table>");
-} else {
-  document.write("<p style='text-align:center;'>No valid results to summarize.</p>");
+} 
+else 
+{
+  document.write("<p style='text-align:center;'>Results are invalid.</p>");
 }
